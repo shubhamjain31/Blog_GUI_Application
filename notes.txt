@@ -1,0 +1,2 @@
+start mysqlcli on cmd:
+	sudo mysql -u root
