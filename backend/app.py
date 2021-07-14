@@ -37,18 +37,17 @@ class ArticleSchema(ma.Schema):
 article_schema  = ArticleSchema()
 article_schemas = ArticleSchema(many=True)
 
-# urls
+
 @app.route('/get', methods = ['GET'])
-@app.route('/add', methods = ['GET'])
-
-
-# views
 def get_articles():
 	return jsonify({"Hello":"World"})
 
+@app.route('/add', methods = ['POST'])
 def add_article():
-	title 			= request.json['title']
-	description		= request.json['description']
+	data			= request.get_json(force=True)
+
+	title 			= data['title']
+	description		= data['description']
 
 	articles = Articles(title, description)
 	db.session.add(articles)
