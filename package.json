@@ -1,0 +1,23 @@
+{
+  "name": "Blog_GUI_Application",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shubhamjain31/Blog_GUI_Application.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shubhamjain31/Blog_GUI_Application/issues"
+  },
+  "homepage": "https://github.com/shubhamjain31/Blog_GUI_Application#readme",
+  "devDependencies": {
+    "electron": "^13.1.6"
+  }
+}
