@@ -1,2 +1,16 @@
 start mysqlcli on cmd:
 	sudo mysql -u root
+
+1) for create modules:
+	npm init -y
+
+2) Install the electron package into your app's devDependencies
+	npm install --save-dev electron
+
+3) changes in package.json file
+
+4) Start command:
+	npm start
+
+
+Note:- https://www.electronjs.org/docs/tutorial/quick-start(For ElectronJS Documentation)
