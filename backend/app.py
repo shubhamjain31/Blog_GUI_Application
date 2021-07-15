@@ -80,6 +80,16 @@ def update_article(id):
 	result  	  =	article_schema.jsonify(article)
 	return result
 
+@app.route('/delete/<id>/', methods = ['DELETE', 'GET'])
+def delete_article(id):
+	article  	  = Articles.query.get(id)
+
+	db.session.delete(article)
+	db.session.commit()
+
+	result  	  =	article_schema.jsonify(article)
+	return result
+
 
 if __name__ == "__main__":
 	app.run(debug=True)
