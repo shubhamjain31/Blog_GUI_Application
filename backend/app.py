@@ -9,7 +9,7 @@ _date = datetime.datetime.now()
 app = Flask(__name__)
 
 # database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:''@localhost/blog'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Shubham31!@localhost/blog'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -35,16 +35,25 @@ class ArticleSchema(ma.Schema):
 		fields = ('id', 'title', 'description', 'date')
 
 article_schema  = ArticleSchema()
-article_schemas = ArticleSchema(many=True)
+articles_schema = ArticleSchema(many=True)
 
 
 @app.route('/get', methods = ['GET'])
 def get_articles():
-	return jsonify({"Hello":"World"})
+	all_articles  = Articles.query.all()
+	results  	  =	articles_schema.dump(all_articles)
+	return jsonify(results)
 
-@app.route('/add', methods = ['POST'])
+@app.route('/get/<id>/', methods = ['GET'])
+def post_details(id):
+	article  	  = Articles.query.get(id)
+	result  	  =	article_schema.jsonify(article)
+	return result
+
+@app.route('/add', methods = ['POST', 'GET'])
 def add_article():
-	data			= request.get_json(force=True)
+	# data			= request.get_json(force=True)
+	data 			= request.json
 
 	title 			= data['title']
 	description		= data['description']
@@ -54,6 +63,22 @@ def add_article():
 	db.session.commit()
 
 	return article_schema.jsonify(articles)
+
+@app.route('/update/<id>/', methods = ['PUT', 'GET'])
+def update_article(id):
+	article  	  = Articles.query.get(id)
+
+	data 			= request.json
+	title 			= data['title']
+	description		= data['description']
+
+	article.title 			= title
+	article.description 	= description
+
+	db.session.commit()
+
+	result  	  =	article_schema.jsonify(article)
+	return result
 
 
 if __name__ == "__main__":
