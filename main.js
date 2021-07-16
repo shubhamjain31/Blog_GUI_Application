@@ -1,4 +1,5 @@
-const {app, BrowserWindow} = require("electron")
+const {app, BrowserWindow, Menu} = require("electron")
+require('electron-reload')(__dirname)
 
 
 function createWindow(){
@@ -11,6 +12,24 @@ function createWindow(){
 
 	// for js console
 	mainWindow.webContents.openDevTools()
+
+	let menu = Menu.buildFromTemplate([
+	{
+		label:"File",
+		submenu:[
+			{label:"Get Article"},
+			{label:"Exit",
+				click(){
+					app.quit()
+				}
+			}
+		]
+	},
+
+	{label:"About"}
+	])
+
+	Menu.setApplicationMenu(menu)
 }
 
 
