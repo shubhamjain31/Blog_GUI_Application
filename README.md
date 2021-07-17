@@ -11,9 +11,13 @@ This repository is a blogging platform where anybody can share their views and r
 ## Build Setup:
 Install all the dependencies by running this command `pip install -r requirements.txt`  
     ` npm install`  
--> Runs the app in the development mode.   
+    
+Runs the app in the development mode.   
 
 Open http://localhost:5000 to view it in the browser.
 
 The page will reload automatically if you make edits.
 You will also see any lint errors in the console.
+
+## Screenshots:  
+![Home Page](https://github.com/shubhamjain31/Blog_GUI_Application/blob/main/Screenshots/GUI_app.jpg)
