@@ -1,0 +1,16 @@
+body{
+	background: gray;
+	margin: 0;
+	padding: 0;
+}
+
+#articles{
+	height: 100vh;
+	overflow-y: auto;
+	padding: 3px;
+	background: bisque;
+}
+
+#myform{
+	background: bisque;
+}
